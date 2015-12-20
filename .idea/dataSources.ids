@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - endo@localhost" uuid="b3b1950b-5b01-4bed-90bf-c8c5ed8e52bf">
+    <database-info product="MySQL" version="5.6.26-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="endo"/>
+    <table name="area_dictionary" schema="" catalog="endo" type="TABLE">
+      <column name="id_area" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_characteristic" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_area"/>
+    </table>
+    <table name="avtorisation" schema="" catalog="endo" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="pass" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id,login"/>
+    </table>
+    <table name="book" schema="" catalog="endo" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="genre" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="characteristic_dictionary" schema="" catalog="endo" type="TABLE">
+      <column name="id_characteristic" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_features" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="last" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_characteristic"/>
+    </table>
+    <table name="features_dictionary" schema="" catalog="endo" type="TABLE">
+      <column name="id_features" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_term" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="last" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_features"/>
+    </table>
+    <table name="medicinecard" schema="" catalog="endo" type="TABLE">
+      <column name="identifyCode" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="pib" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="adress" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="burnDate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="identifyCode"/>
+      <exported-key name="fk_revisions_medicinecard1" table="revisions" schema="" catalog="endo" columns="medicinecard_identifyCode1"/>
+    </table>
+    <table name="organ_dictionary" schema="" catalog="endo" type="TABLE">
+      <column name="id_organ" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_revision_type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_organ"/>
+    </table>
+    <table name="region_dictionary" schema="" catalog="endo" type="TABLE">
+      <column name="id_region" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_organ" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_region"/>
+    </table>
+    <table name="revision_type" schema="" catalog="endo" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="revisions" schema="" catalog="endo" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cardid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="revisionid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="doctorid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="medicinecard_identifyCode" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="revisionType_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="revisions_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="revisions_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="revisions_revisionType_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="medicinecard_identifyCode1" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_revisions_medicinecard1" columns="medicinecard_identifyCode1" ref-table="medicinecard" ref-schema="" ref-catalog="endo" ref-columns="identifyCode" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_revision_medicinecard_idx" unique="false" columns="medicinecard_identifyCode"/>
+      <index name="fk_revision_revisionType1_idx" unique="false" columns="revisionType_id"/>
+      <index name="fk_revision_user1_idx" unique="false" columns="user_id"/>
+      <index name="fk_revisions_medicinecard1_idx" unique="false" columns="medicinecard_identifyCode1"/>
+    </table>
+    <table name="revisiontype" schema="" catalog="endo" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="revisionName" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="term_dictionary" schema="" catalog="endo" type="TABLE">
+      <column name="id_term" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_region" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="last" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_term"/>
+    </table>
+    <table name="user" schema="" catalog="endo" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pass" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pib" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+  </data-source>
+</component>

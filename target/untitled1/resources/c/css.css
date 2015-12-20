@@ -1,0 +1,44 @@
+#description{
+    position: relative;
+    float:right;
+    width: 60%;
+}
+
+#regionName{
+    display: block;
+    text-align: center;
+}
+
+.button{
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    width: 100px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: cornflowerblue;
+}
+
+
+#content{
+    width: 90%;
+    position: relative;
+    left:0;
+    right: 0;
+    margin: auto;
+}
+
+#organs{
+    float:left;
+}
+
+.organName{
+    display: block;
+    padding-left: 20px;
+}
+
+.regionText{
+    width: 80%;
+}
