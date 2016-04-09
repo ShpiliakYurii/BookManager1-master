@@ -21,4 +21,26 @@ public class RegionRepository {
         return this.sessionFactory.getCurrentSession().createQuery("from RegionDictionary ").list();
     }
 
+    public void deleteRegionById(Integer id){
+        RegionDictionary regionDictionary = (RegionDictionary)this.sessionFactory.getCurrentSession().load(RegionDictionary.class, id);
+        if(regionDictionary != null){
+            this.sessionFactory.getCurrentSession().delete(regionDictionary);
+        }
+    }
+
+    public void addNewRegion(RegionDictionary regionDictionary){
+        if(regionDictionary.getName().length() > 49){
+            regionDictionary.setName(regionDictionary.getName().substring(0,49));
+        }
+        this.sessionFactory.getCurrentSession().save(regionDictionary);
+    }
+
+    public RegionDictionary getRegionById(Integer id){
+        return (RegionDictionary)this.sessionFactory.getCurrentSession().createQuery("from RegionDictionary where idRegion = "+ id).list().get(0);
+    }
+
+    public void update(RegionDictionary regionDictionary){
+        this.sessionFactory.getCurrentSession().update(regionDictionary);
+    }
+
 }

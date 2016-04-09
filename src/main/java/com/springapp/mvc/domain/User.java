@@ -1,12 +1,10 @@
 package com.springapp.mvc.domain;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
- * Created by Yurii on 18.10.2015.
+ * Created by Yurii on 04.01.2016.
  */
 @Entity
 public class User {
@@ -15,8 +13,15 @@ public class User {
     private String pass;
     private String role;
     private String pib;
+    private Collection<Revisions> revisionsesById;
+    private String workPlace;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
@@ -90,5 +95,24 @@ public class User {
         result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (pib != null ? pib.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "userByDoctorId")
+    public Collection<Revisions> getRevisionsesById() {
+        return revisionsesById;
+    }
+
+    public void setRevisionsesById(Collection<Revisions> revisionsesById) {
+        this.revisionsesById = revisionsesById;
+    }
+
+    @Basic
+    @Column(name = "work_place")
+    public String getWorkPlace() {
+        return workPlace;
+    }
+
+    public void setWorkPlace(String workPlace) {
+        this.workPlace = workPlace;
     }
 }

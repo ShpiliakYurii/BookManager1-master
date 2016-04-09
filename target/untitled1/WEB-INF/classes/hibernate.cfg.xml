@@ -5,8 +5,6 @@
     <session-factory>
         <property name="connection.url">jdbc:mysql://localhost:3306/endo</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <mapping class = "com.springapp.mvc.domain.Book"></mapping>
-        <mapping class="com.springapp.mvc.domain.Avtorisation"/>
         <mapping class="com.springapp.mvc.domain.User"/>
         <mapping class="com.springapp.mvc.domain.AreaDictionary"/>
         <mapping class="com.springapp.mvc.domain.CharacteristicDictionary"/>
@@ -17,5 +15,17 @@
         <mapping class="com.springapp.mvc.domain.Revisions"/>
         <mapping class="com.springapp.mvc.domain.Revisiontype"/>
         <mapping class="com.springapp.mvc.domain.TermDictionary"/>
+        <mapping class="com.springapp.mvc.domain.Apparatus"/>
+        <mapping class="com.springapp.mvc.domain.ConclusionDictionary"/>
+        <mapping class="com.springapp.mvc.domain.Conclusions"/>
+        <mapping class="com.springapp.mvc.domain.DisinfectantSolution"/>
+        <mapping class="com.springapp.mvc.domain.ManipulationDictionary"/>
+        <mapping class="com.springapp.mvc.domain.Manipulations"/>
+        <mapping class="com.springapp.mvc.domain.RecomendationDictionary"/>
+        <mapping class="com.springapp.mvc.domain.RefferalDictionary"/>
+        <mapping class="com.springapp.mvc.domain.Recomendations"/>
+        <mapping class="com.springapp.mvc.domain.OperationDictionary"/>
+        <mapping class="com.springapp.mvc.domain.Operations"/>
+        <mapping class="com.springapp.mvc.domain.Settings"/>
     </session-factory>
 </hibernate-configuration>

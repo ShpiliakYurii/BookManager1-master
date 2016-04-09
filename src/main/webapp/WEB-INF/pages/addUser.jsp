@@ -27,7 +27,6 @@ Enter data
     </tr>
     <tr>
       <td>Role</td>
-      <%--<td><form:input path="role"/></td>--%>
       <td>
         <form:select path="role">
           <form:option value="admin"/>

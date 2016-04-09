@@ -3,7 +3,7 @@ package com.springapp.mvc.domain;
 import javax.persistence.*;
 
 /**
- * Created by Yurii on 12.12.2015.
+ * Created by Yurii on 04.01.2016.
  */
 @Entity
 @Table(name = "features_dictionary", schema = "", catalog = "endo")
@@ -12,8 +12,15 @@ public class FeaturesDictionary {
     private String name;
     private Integer idTerm;
     private Integer last;
+    private String placeholder;
+    private Integer conclusionDictionaryId;
+
+    public void setIdFeatures(Integer idFeatures) {
+        this.idFeatures = idFeatures;
+    }
 
     @Id
+    @GeneratedValue
     @Column(name = "id_features")
     public int getIdFeatures() {
         return idFeatures;
@@ -75,5 +82,25 @@ public class FeaturesDictionary {
         result = 31 * result + (idTerm != null ? idTerm.hashCode() : 0);
         result = 31 * result + (last != null ? last.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "placeholder")
+    public String getPlaceholder() {
+        return placeholder;
+    }
+
+    public void setPlaceholder(String placeholder) {
+        this.placeholder = placeholder;
+    }
+
+    @Basic
+    @Column(name = "conclusion_dictionary_id")
+    public Integer getConclusionDictionaryId() {
+        return conclusionDictionaryId;
+    }
+
+    public void setConclusionDictionaryId(Integer conclusionDictionaryId) {
+        this.conclusionDictionaryId = conclusionDictionaryId;
     }
 }

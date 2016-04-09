@@ -1,29 +1,29 @@
 package com.springapp.mvc.domain;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Yurii on 12.12.2015.
+ * Created by Yurii on 27.02.2016.
  */
 @Entity
+@Table(name = "medicinecard1", schema = "", catalog = "endo")
 public class Medicinecard {
-    private int identifyCode;
+    private Integer id;
     private String pib;
     private String adress;
     private Date burnDate;
+    private String identifyCode;
 
     @Id
-    @Column(name = "identifyCode")
-    public int getIdentifyCode() {
-        return identifyCode;
+    @GeneratedValue
+    @Column(name = "id")
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdentifyCode(int identifyCode) {
-        this.identifyCode = identifyCode;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Basic
@@ -56,6 +56,16 @@ public class Medicinecard {
         this.burnDate = burnDate;
     }
 
+    @Basic
+    @Column(name = "identifyCode")
+    public String getIdentifyCode() {
+        return identifyCode;
+    }
+
+    public void setIdentifyCode(String identifyCode) {
+        this.identifyCode = identifyCode;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -63,9 +73,10 @@ public class Medicinecard {
 
         Medicinecard that = (Medicinecard) o;
 
-        if (identifyCode != that.identifyCode) return false;
         if (adress != null ? !adress.equals(that.adress) : that.adress != null) return false;
         if (burnDate != null ? !burnDate.equals(that.burnDate) : that.burnDate != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (identifyCode != null ? !identifyCode.equals(that.identifyCode) : that.identifyCode != null) return false;
         if (pib != null ? !pib.equals(that.pib) : that.pib != null) return false;
 
         return true;
@@ -73,10 +84,11 @@ public class Medicinecard {
 
     @Override
     public int hashCode() {
-        int result = identifyCode;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (pib != null ? pib.hashCode() : 0);
         result = 31 * result + (adress != null ? adress.hashCode() : 0);
         result = 31 * result + (burnDate != null ? burnDate.hashCode() : 0);
+        result = 31 * result + (identifyCode != null ? identifyCode.hashCode() : 0);
         return result;
     }
 }

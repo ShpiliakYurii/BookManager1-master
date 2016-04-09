@@ -3,7 +3,7 @@ package com.springapp.mvc.domain;
 import javax.persistence.*;
 
 /**
- * Created by Yurii on 12.12.2015.
+ * Created by Yurii on 04.01.2016.
  */
 @Entity
 @Table(name = "area_dictionary", schema = "", catalog = "endo")
@@ -11,6 +11,10 @@ public class AreaDictionary {
     private int idArea;
     private String name;
     private Integer idCharacteristic;
+
+    public void setIdArea(Integer idArea) {
+        this.idArea = idArea;
+    }
 
     @Id
     @Column(name = "id_area")

@@ -21,4 +21,25 @@ public class TermRepository {
         return this.sessionFactory.getCurrentSession().createQuery("from TermDictionary ").list();
     }
 
+    public void deleteTermById(Integer id){
+        TermDictionary termDictionary = (TermDictionary)this.sessionFactory.getCurrentSession().load(TermDictionary.class, id);
+        if(termDictionary != null)
+            this.sessionFactory.getCurrentSession().delete(termDictionary);
+    }
+
+    public void addNewTerm(TermDictionary termDictionary){
+        if(termDictionary.getName().length() > 49){
+            termDictionary.setName(termDictionary.getName().substring(0,49));
+        }
+        this.sessionFactory.getCurrentSession().save(termDictionary);
+    }
+
+    public TermDictionary getTermById(Integer id){
+        return (TermDictionary)this.sessionFactory.getCurrentSession().createQuery("from TermDictionary where idTerm = " + id).list().get(0);
+    }
+
+    public void update(TermDictionary termDictionary){
+        this.sessionFactory.getCurrentSession().update(termDictionary);
+    }
+
 }

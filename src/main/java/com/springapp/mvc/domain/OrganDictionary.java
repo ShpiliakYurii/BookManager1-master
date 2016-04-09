@@ -3,7 +3,7 @@ package com.springapp.mvc.domain;
 import javax.persistence.*;
 
 /**
- * Created by Yurii on 12.12.2015.
+ * Created by Yurii on 04.01.2016.
  */
 @Entity
 @Table(name = "organ_dictionary", schema = "", catalog = "endo")
@@ -11,8 +11,17 @@ public class OrganDictionary {
     private int idOrgan;
     private String name;
     private Integer idRevisionType;
+    private int id;
 
-    @Id
+    public void setIdOrgan(Integer idOrgan) {
+        this.idOrgan = idOrgan;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Basic
     @Column(name = "id_organ")
     public int getIdOrgan() {
         return idOrgan;
@@ -63,5 +72,16 @@ public class OrganDictionary {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (idRevisionType != null ? idRevisionType.hashCode() : 0);
         return result;
+    }
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -1,88 +1,96 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<script>
-  function getCharact(idFeatures){
-    var txt = "";
-    <c:forEach items = '${characteristics}' var='characteristic'>
-    if(idFeatures == ${characteristic.idFeatures}){
-      txt += "<option>${characteristic.name}</option>";
-    }
-    </c:forEach>
-    return txt;
-  }
-
-  function innerHtml(m, region){
-    var isFeature = false;
-    var txt = "<span id = 'regionName' value='" + region + "'>" + region + "</span><ul>";
-    <c:forEach items = '${terms}' var='term'>
-    if(m == ${term.idRegion}){
-      txt += "<li t = '${term.name}'>${term.name}";
-          <c:forEach items = '${features}' var='feature'>
-          if(${term.idTerm} == ${feature.idTerm}){
-            if(isFeature == false) {
-              txt += "<ul>";
-              isFeature = true;
-            }
-            txt += "<li><input type='checkbox' name='feature' value='${feature.name}'>${feature.name}";
-            var fl = ${feature.last};
-            if(fl == 0){
-              txt += "<select name = 'char'>";
-              txt += getCharact(${feature.idFeatures});
-              txt += "</select>";
-            }
-            if(fl == 1) {
-              txt += "<input type ='text' size='20'>";
-            }
-            txt += "</li>";
-          }
-          </c:forEach>
-      if(isFeature == true) {
-        txt += "</ul>";
-        isFeature = false;
-      }
-      var tl = ${term.last};
-      if(tl == 1)
-        txt += "<input id='termInput' type ='text' size='20'>";
-      txt += "</li>";
-    }
-    </c:forEach>
-    document.getElementById('description').innerHTML = txt + "</ul><span class='button' onclick='addDescriptionElement("+m+")'>Добавити</span>";
-
-  }
-</script>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
     <title>Нове обстеження</title>
-  <link href="<c:url value="/resources/c/css.css"/>" rel="stylesheet">
     <script src="<c:url value="/resources/s/description.js"/>"></script>
+    <link href="<c:url value="/resources/bootstrap-3.3.6-dist/css/bootstrap.min.css"/>" rel="stylesheet" media="screen">
+    <link href="<c:url value="/resources/c/css.css"/>" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="<c:url value="/resources/s/jquery-1.11.3.min.js"/>"></script>
+    <link href="<c:url value="/resources/c/select.css"/>" rel="stylesheet" media="screen">
+    <script src="<c:url value="/resources/s/select.js"/>"></script>
 </head>
 <body>
-<div id="content">
-  <div id="organs">
-    <c:if test = "${!empty organs}">
-    <c:forEach items = "${organs}" var = "organ">
-      <span class="organName">${organ.name}</span>
-      <ul class="regions">
-        <c:forEach items = "${regions}" var="region">
-          <c:if test="${organ.idOrgan.equals(region.idOrgan)}">
-            <li id="region${region.idRegion}" onclick="innerHtml('${region.idRegion}','${region.name}')"><input type="checkbox" name="region" value="${region.name}" >${region.name}</li>
-          </c:if>
-        </c:forEach>
-      </ul>
-    </c:forEach>
-  </c:if>
-    <span class='button' onclick="doFinallyDescription()">Завершити</span>
-  </div>
-  <div id="description">
-  </div>
+<div class="container">
+    <t:head/>
+    <t:menu/>
+    <div class="row content">
+        <form:form method="post" action="revisionDescription">
+            <div class="col-sm-12">
+                <h3>Крок 1. Вибір пацієнта.</h3>
+                <c:if test="${!empty medicinecards}">
+                    <select name="pacient" class="input-text">
+                        <c:forEach items="${medicinecards}" var="medicinecard">
+                            <option value="${medicinecard.id}">${medicinecard.pib}</option>
+                        </c:forEach>
+                    </select>
+                </c:if>
+                <a href="addNewMedicinecard">Додати нового пацієнта.</a>
+            </div>
+            <div class="col-sm-12">
+                <h3>Крок 2. Вибір апарату для обстеження.</h3>
+                <c:if test="${!empty apparatuses}">
+                    <select name="apparat" class="input-text">
+                        <c:forEach items="${apparatuses}" var="apparat">
+                            <c:if test="${apparat.id == defaultApparatus}">
+                                <option value="${apparat.id}" selected>${apparat.name}</option>
+                            </c:if>
+                            <c:if test="${apparat.id != defaultApparatus}">
+                                <option value="${apparat.id}">${apparat.name}</option>
+                            </c:if>
+                        </c:forEach>
+                    </select>
+                </c:if>
+                <a href="addNewApparatus">Додати новий апарат.</a>
+            </div>
+            <div class="col-sm-12">
+                <h3>Крок 3. Вибір направлення пацієнта.</h3>
+                <c:if test="${!empty refferalDictionaries}">
+                    <select name="refferal" class="input-text">
+                        <c:forEach items="${refferalDictionaries}" var="reff">
+                            <option value="${reff.id}">${reff.name}</option>
+                        </c:forEach>
+                    </select>
+                </c:if>
+                <a href="addNewRefferal">Додати нове направлення.</a>
+            </div>
+            <div class="col-sm-12">
+                <h3>Крок 4. Вибір дизінфекційного розчину для обробки апарату.</h3>
+                <c:if test="${!empty disinfectantSolutions}">
+                    <select name="solution" class="input-text">
+                        <c:forEach items="${disinfectantSolutions}" var="disSol">
+                            <c:if test="${disSol.id == defaultSolution}">
+                                <option value="${disSol.id}" selected>${disSol.name}</option>
+                            </c:if>
+                            <c:if test="${disSol.id != defaultSolution}">
+                                <option value="${disSol.id}">${disSol.name}</option>
+                            </c:if>
+                        </c:forEach>
+                    </select>
+                </c:if>
+                <a href="addNewDisinfectantSolution">Додати новий дизінфекційний розчин.</a>
+            </div>
+            <div class="col-sm-12" id="rTypes">
+                <h3>Крок 5. Вибір типу обстеження.</h3>
+                <c:if test = "${!empty revisionTypeList}">
+                    <c:forEach items = "${revisionTypeList}" var = "r">
+                        <input type="radio" name="revisionType" value="${r.id}" id="r${r.id}">
+                        <label for="r${r.id}"><span></span>${r.revisionName}</label>
+                        <br>
+                    </c:forEach>
+                    <script>
+                        document.getElementById('rTypes').childNodes[3].checked = true;
+                    </script>
+                </c:if>
+                <a href="addNewRevisionType">Додати новий вид обстеження.</a>
+                <input type="submit" value="Далі" class="button"/>
+            </div>
+        </form:form>
+    </div>
 </div>
-<c:if test = "${!empty revisionTypeList}">
-    <c:forEach items = "${revisionTypeList}" var = "r">
-      <a href="/revisionDescription/${r.id}">${r.revisionName}</a><br>
-    </c:forEach>
-</c:if>
 </body>
 </html>
+
 

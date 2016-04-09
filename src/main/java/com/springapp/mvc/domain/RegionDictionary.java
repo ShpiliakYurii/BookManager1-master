@@ -3,7 +3,7 @@ package com.springapp.mvc.domain;
 import javax.persistence.*;
 
 /**
- * Created by Yurii on 12.12.2015.
+ * Created by Yurii on 04.01.2016.
  */
 @Entity
 @Table(name = "region_dictionary", schema = "", catalog = "endo")
@@ -12,7 +12,12 @@ public class RegionDictionary {
     private String name;
     private Integer idOrgan;
 
+    public void setIdRegion(Integer idRegion) {
+        this.idRegion = idRegion;
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "id_region")
     public int getIdRegion() {
         return idRegion;

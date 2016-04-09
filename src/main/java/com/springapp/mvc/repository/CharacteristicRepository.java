@@ -21,4 +21,24 @@ public class CharacteristicRepository {
     public List<CharacteristicDictionary> getAll(){
         return this.sessionFactory.getCurrentSession().createQuery("from CharacteristicDictionary ").list();
     }
+
+    public void deleteCharacteristicById(Integer id){
+        CharacteristicDictionary characteristicDictionary = (CharacteristicDictionary)this.sessionFactory.getCurrentSession().load(CharacteristicDictionary.class, id);
+        if(characteristicDictionary != null){
+            this.sessionFactory.getCurrentSession().delete(characteristicDictionary);
+        }
+    }
+
+    public void addNewCharacteristic(CharacteristicDictionary characteristicDictionary){
+        characteristicDictionary.setLast(0);
+        this.sessionFactory.getCurrentSession().save(characteristicDictionary);
+    }
+
+    public CharacteristicDictionary getCharacteristicById(Integer id){
+        return (CharacteristicDictionary)this.sessionFactory.getCurrentSession().createQuery("from CharacteristicDictionary where idCharacteristic = " + id).list().get(0);
+    }
+
+    public void update(CharacteristicDictionary characteristicDictionary){
+        this.sessionFactory.getCurrentSession().update(characteristicDictionary);
+    }
 }

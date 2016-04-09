@@ -12,5 +12,7 @@
 </head>
 <body>
   <a href="newRevision">Нове обстеження</a>
+  <br>
+  <a href="/revisionList">Журнал</a>
 </body>
 </html>
