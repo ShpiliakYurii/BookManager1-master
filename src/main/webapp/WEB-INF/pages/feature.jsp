@@ -21,6 +21,8 @@
     <div class="row content">
         <div class="col-sm-12 top-border">
             Редагування ознаки "${feature.name}".
+            <br>
+            <a href="${url}addNewFeature" class="button col-sm-3">Назад</a>
         </div>
         <form:form method="post" commandName="feature" action="${url}execEditFeature">
             <input type="hidden" name="idFeatures" value="${feature.idFeatures}">

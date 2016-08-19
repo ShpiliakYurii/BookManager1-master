@@ -32,12 +32,14 @@ public class UserRepository {
     public void removeUser(Integer id){
         User user = (User)this.sessionFactory.getCurrentSession().load(User.class, id);
         if(user != null){
+            this.sessionFactory.getCurrentSession().createQuery("delete from Settings s where s.userId = " + id).executeUpdate();
             this.sessionFactory.getCurrentSession().delete(user);
         }
     }
 
-    public void addUser(User user){
+    public Integer addUser(User user){
         this.sessionFactory.getCurrentSession().save(user);
+        return user.getId();
     }
 
     public Object getSettings(Integer userId){
@@ -50,5 +52,8 @@ public class UserRepository {
         this.sessionFactory.getCurrentSession().createSQLQuery(sql).executeUpdate();
     }
 
+    public void addSettings(Settings settings){
+        this.sessionFactory.getCurrentSession().save(settings);
+    }
 
 }

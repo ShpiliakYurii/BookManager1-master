@@ -12,7 +12,7 @@
 
 
     <div class="row head-row">
-        <img class="col-lg-2 col-md-2 col-sm-2 emblem" src="${url}resources/img/emblem.png">
+        <img class="col-lg-2 col-md-2 col-sm-2 emblem" src="${url}resources/img/video-system.png">
         <div class="col-lg-6 col-md-6 col-sm-6 name">ENDOSCOPY MASTER</div>
         <img class="col-lg-4 col-sm-4" src="${url}/resources/img/img1.png">
     </div>

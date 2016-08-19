@@ -20,6 +20,7 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування "${conclusion.name}".
+      <a href="${url}addNewConlusion" class="button col-sm-3">Назад</a>
       <form:form method="post" commandName="conclusion" action="${url}execEditConclusion">
         <input type="hidden" value="${conclusion.id}" name="id">
         <div class="col-sm-12">

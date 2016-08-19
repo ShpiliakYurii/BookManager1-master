@@ -20,6 +20,8 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування органу "${organ.name}".
+      <br>
+      <a href="${url}addNewOrgan" class="button col-sm-3">Назад</a>
     </div>
     <form:form method="post" commandName="organ" action="${url}execEditOrgan">
       <div class="col-sm-12">

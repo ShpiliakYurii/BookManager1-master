@@ -121,6 +121,10 @@
     text-align: left;
 }
 
+.Navigation li{
+    list-style-type: none;
+}
+
 .Navigation li:hover ul{
     display: block;
 }

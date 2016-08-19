@@ -20,6 +20,8 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування терміну "${term.name}".
+      <br>
+      <a href="${url}addNewTerm" class="button col-sm-3">Назад</a>
     </div>
     <form:form method="post" commandName="term" action="${url}execEditTerm">
       <input type="hidden" name="idTerm" value="${term.idTerm}">

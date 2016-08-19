@@ -17,10 +17,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * Created by Yurii on 12.12.2015.
- */
 @Controller
 @SessionAttributes({"user", "apparatus", "solution", "pacient", "revisionType", "revision"})
 public class DoctorController {

@@ -147,6 +147,14 @@ label{
 	top: 1px;
 }
 
+.center{
+	left:0;
+	right: 0;
+	top: 5px;
+	margin: auto;
+	margin-top: 5px;
+}
+
 
 /*checkbox style*/
 input[type="checkbox"] {

@@ -20,6 +20,8 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування ділянки "${region.name}".
+      <br>
+      <a href="${url}addNewRegion" class="button col-sm-3">Назад</a>
     </div>
     <form:form method="post" commandName="region" action="${url}execEditRegion">
       <div class="col-sm-12">

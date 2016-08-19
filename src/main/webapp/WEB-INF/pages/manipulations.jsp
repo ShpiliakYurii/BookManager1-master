@@ -20,7 +20,12 @@
     <t:menu/>
     <div class="row content">
         <H3>Робота з маніпуляціями</H3>
-        <a href="${url}takeManipulations/${mode}" class="button">${modeText}</a>
+        <c:if test="${modeText == 1}">
+            <a href="${url}takeManipulations/${mode}" class="button">Маніпуляції без результатів</a>
+        </c:if>
+        <c:if test="${modeText == 0}">
+            <a href="${url}takeManipulations/${mode}" class="button">Всі маніпуляції</a>
+        </c:if>
         <c:if test="${empty(list)}">
             Немає виконаних маніпуляцій.
         </c:if>

@@ -21,6 +21,8 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування характеристики "${characteristic.name}".
+      <br>
+      <a href="${url}addNewCharacteristic" class="button col-sm-3">Назад</a>
     </div>
     <form:form method="post" commandName="characteristic" action="${url}execEditCharacteristic">
       <input type="hidden" value="${characteristic.idCharacteristic}" name="idCharacteristic">

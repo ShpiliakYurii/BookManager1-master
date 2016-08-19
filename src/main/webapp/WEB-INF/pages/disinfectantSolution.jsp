@@ -20,6 +20,7 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування "${disinfectantSolution.name}".
+      <a href="${url}addNewDisinfectantSolution" class="button col-sm-3">Назад</a>
       <form:form method="post" commandName="disinfectantSolution" action="${url}execEditDisinfectantSolution">
         <input type="hidden" value="${disinfectantSolution.id}" name="id">
         <div class="col-sm-4">

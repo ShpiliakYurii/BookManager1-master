@@ -20,6 +20,7 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування "${apparatus.name}".
+      <a href="${url}addNewApparatus" class="button col-sm-3">Назад</a>
       <form:form method="post" commandName="apparatus" action="${url}execEditApparatus">
         <div class="col-sm-4">
           <label>Назва апарату</label>

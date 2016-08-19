@@ -41,7 +41,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="E:\Java\BookManager1-master\BookManager1-master\target/MANIFEST.MF" />
+        <element id="file-copy" path="E:\EndoscopyMaster\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="untitled1/web/Web" />
     </root>

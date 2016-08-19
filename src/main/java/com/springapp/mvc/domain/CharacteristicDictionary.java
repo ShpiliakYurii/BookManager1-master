@@ -1,6 +1,7 @@
 package com.springapp.mvc.domain;
 
 import javax.persistence.*;
+import javax.persistence.Table;
 
 /**
  * Created by Yurii on 04.01.2016.
@@ -91,5 +92,27 @@ public class CharacteristicDictionary {
 
     public void setConclusionDictionaryId(Integer conclusionDictionaryId) {
         this.conclusionDictionaryId = conclusionDictionaryId;
+    }
+
+    /**
+     * Created by Yurii on 14.03.2016.
+     */
+    public static class Events {
+        public static boolean validateApparatus(DisinfectantSolution.Table t){
+            System.out.println("Validate method is runing");
+            if(t.getFieldByName("name").getValue().length() > 45 )
+                return false;
+            return true;
+        }
+
+        public static boolean validateMedicinecard(DisinfectantSolution.Table t){
+            if(t.getFieldByName("pib").getValue().length() > 45 )
+                return false;
+            if(t.getFieldByName("adress").getValue().length() > 45 )
+                return false;
+            if(t.getFieldByName("identifyCode").getValue().length() != 10 )
+                return false;
+            return true;
+        }
     }
 }

@@ -21,6 +21,8 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування типу обстеження "${revisionType.revisionName}".
+      <br>
+      <a href="/addNewRevisionType" class="button col-sm-3">Назад</a>
     </div>
     <form:form method="post" commandName="revisionType" action="${url}execEditRevisionType">
       <div class="col-sm-3">
@@ -31,7 +33,7 @@
         <label><form:errors path="revisionName"></form:errors></label>
       </div>
       <div class="col-sm-3">
-        <label>Назва типу обстеження</label>
+        <label>Абревіатура</label>
       </div>
       <div class="col-sm-9">
         <form:input path="abr" value="${revisionType.abr}" class='input-text'/>

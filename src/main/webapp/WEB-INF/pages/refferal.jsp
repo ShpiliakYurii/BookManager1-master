@@ -20,6 +20,7 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування "${refferal.name}".
+      <a href="${url}addNewRefferal" class="button col-sm-3">Назад</a>
       <form:form method="post" commandName="refferal" action="${url}execEditRefferal">
         <input type="hidden" value="${refferal.id}" name="id">
         <div class="col-sm-4">

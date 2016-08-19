@@ -1149,11 +1149,11 @@ public class DataController {
         List<Manipulations> manipulations;
         if (mode == 0) {
             manipulations = this.manipulationRepository.getFullManipulations(((User) httpSession.getAttribute("user")).getId());
-            model.addAttribute("modeText", "Маніпуляції без результатів");
+            model.addAttribute("modeText", 1);
             model.addAttribute("mode", 1);
         } else {
             manipulations = this.manipulationRepository.getManipulationsWithoutValue(((User) httpSession.getAttribute("user")).getId());
-            model.addAttribute("modeText", "Всі маніпуляції");
+            model.addAttribute("modeText", 1);
             model.addAttribute("mode", 0);
         }
         model.addAttribute("list", manipulations);

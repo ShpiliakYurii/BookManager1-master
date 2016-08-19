@@ -20,6 +20,7 @@
   <div class="row content">
     <div class="col-sm-12 top-border">
       Редагування "${recomendation.name}".
+      <a href="${url}addNewRecomendation" class="button col-sm-3">Назад</a>
       <form:form method="post" commandName="recomendation" action="${url}execEditRecomendation">
         <input type="hidden" value="${recomendation.id}" name="id">
         <div class="col-sm-12">
